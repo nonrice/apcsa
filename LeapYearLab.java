@@ -21,6 +21,7 @@ public class LeapYearLab {
         } while (year != 0);
 
         System.out.println("\nGood-bye");
+        in.close();
     }
 
     public static boolean validity(int year){
