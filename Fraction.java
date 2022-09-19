@@ -24,40 +24,54 @@ public class Fraction {
         return d;
     }
     
-    public void add(Fraction a){
-        n = n*a.getDenominator() + a.getNumerator()*d;
-        d = d * a.getDenominator();
-        simplify();
+    public void setNumerator(int x){
+        n = x;
     }
     
-    public void subtract(Fraction a){
-        n = n*a.getDenominator() - a.getNumerator()*d;
-        d = d * a.getDenominator();
-        simplify();
+    public void setDenominator(int x){
+        d = x;
     }
     
-    public void multiply(Fraction a){
-        n *= a.getNumerator();
-        d *= a.getDenominator();
-        simplify();
+    public Fraction add(Fraction a){
+        Fraction ans = new Fraction(n*a.getDenominator() + a.getNumerator()*d, d * a.getDenominator());
+        ans.simplify();
+        return ans;
     }
     
-    public void divide(Fraction a){
-        n *= a.getDenominator();
-        d *= a.getNumerator();
-        simplify();
+    public Fraction subtract(Fraction a){
+        Fraction ans = new Fraction(n*a.getDenominator() - a.getNumerator()*d, d * a.getDenominator());
+        ans.simplify();
+        return ans;
+    }
+    
+    public Fraction multiply(Fraction a){
+        Fraction ans = new Fraction(n * a.getNumerator(), d * a.getDenominator());
+        ans.simplify();
+        return ans;
+    }
+    
+    public Fraction divide(Fraction a){
+        Fraction ans = new Fraction(n * a.getDenominator(), d * a.getNumerator());
+        ans.simplify();
+        return ans;
+    }
+    
+    public double decimalValue(){
+        return 1.0*n/d;
     }
     
     public String toString(){
-        return a + "/" + b;
+        if (d == 1) return ""+n;
+        if (n == 0) return "0";
+        return n + "/" + d;
     }
     
     public boolean equals(Fraction a){
         int sn = a.getNumerator();
         int sd = a.getDenominator();
         int gcd = gcf(sn, sd);
-        sn /= gcf;
-        sd /= gcf;
+        sn /= gcd;
+        sd /= gcd;
         
         return sn == n && sd == d;
     }
@@ -66,9 +80,13 @@ public class Fraction {
         int gcd = gcf(n, d);
         n /= gcd;
         d /= gcd;
+        if (d < 0){
+            n *= -1;
+            d *= -1;
+        }
     }
     
-    public static int gcf(a, b){
+    public static int gcf(int a, int b){
         while (b != 0){
             int t = b;
             b = a%b;
@@ -76,3 +94,4 @@ public class Fraction {
         }
         return a;
     }
+}
