@@ -1,9 +1,11 @@
+import java.util.Arrays;
+
 public class APTriangle {
     private double a, b, c;
     private boolean exists;
     
     public APTriangle(double a, double b, double c){
-        int s[3] = { a, b, c };
+        double[] s = { a, b, c };
         Arrays.sort(s);
         if (a+b>c && a+c>b && b+c>a){
             exists = true;
@@ -40,14 +42,14 @@ public class APTriangle {
     public String compareBySides(){
         if (!exists) return null;
         
-        if (a == b && b == c) return "Equilateral";
-        else if (a == b || b == c || c == a) return "Isosceles";
-        else return "Scalene";
+        if (a == b && b == c) return "equilateral";
+        else if (a == b || b == c || c == a) return "isosceles";
+        else return "scalene";
     }
     
     public String compareByAngles(){
         if (!exists) return null;
-        int cs=c*c, as=a*a, bs=b*b;
+        double cs=c*c, as=a*a, bs=b*b;
         
         if (cs<as+bs) return "acute";
         else if (cs==as+bs) return "right";
