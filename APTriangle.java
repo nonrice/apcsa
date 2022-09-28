@@ -1,3 +1,5 @@
+// Eric Xue PD6
+
 import java.util.Arrays;
 
 public class APTriangle {
