@@ -1,3 +1,5 @@
+// Eric Xue PD6
+
 public class SimpleDate {
     private int d=1, m=1, y=1;
     private static int MSZ = { -1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
