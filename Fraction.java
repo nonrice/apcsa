@@ -1,3 +1,5 @@
+// Eric Xue PD6
+
 public class Fraction {
     private int n, d;
     
