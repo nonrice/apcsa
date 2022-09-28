@@ -1,3 +1,5 @@
+// Eric Xue PD6
+
 public class Name {
     private String f, m, l;
     
