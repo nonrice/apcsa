@@ -1,3 +1,5 @@
+// Eric Xue PD5
+
 public class LinearFunction implements LinearFunctionMethods {
     private double m, b;
 
