@@ -1,3 +1,5 @@
+// Eric Xue PD5
+
 public class Kindergarten implements Gradable {
     private String name;
     private int st;
