@@ -1,3 +1,5 @@
+// Eric Xue PD5
+
 public class Student implements Gradable {
     private String name;
     private int cnt = 0;
