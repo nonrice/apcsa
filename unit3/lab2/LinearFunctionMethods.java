@@ -1,3 +1,5 @@
+// Eric Xue PD5
+
 public interface LinearFunctionMethods {
     double getSlope();
     double getYIntercept();
