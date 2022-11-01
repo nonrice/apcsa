@@ -2,16 +2,17 @@ import java.util.Arrays;
 
 public class Pizza {
     private final int MX = 15;
-    private String sa = new String[15];
+    private String sa[] = new String[15];
     private int n = 0;
     
     public Pizza (String a[]) {
-        for (String s : a) if (s != null) ++n;
+        for (String s : a) if (s != null && !s.equals("zzz")) ++n;
         
         int p2 = 0;
         for (String s : a){
-            if (s != null) sa[p2++] = s;
+            if (s != null && !s.equals("zzz")) sa[p2++] = s;
         }
+        Arrays.sort(sa, 0, n);
     }
     
     public int getNumTopping(){
@@ -20,25 +21,37 @@ public class Pizza {
     
     public void printTopping(){
         for (int i=1; i<=n; ++i){
-            System.out.println((i+1) + ". " + sa[i]);
+            System.out.println(i + ". " + sa[i-1]);
         }
     }
     
     public boolean addTopping(String s){
         if (n == 15) return false;
-        int p = binarySearch(s);
-        for (int i=p+1; i<15; ++i){
-            sa[i] = sa[i-1];
+        int i=0;
+        boolean f = false;
+        for (; i<n; ++i){
+            if (sa[i].compareTo(s) >= 0){
+                f = true;
+                break;
+            }
         }
-        sa[p] = s;
+        
+        for (int j=n; j>i; --j){
+            sa[j] = sa[j-1];
+        }
+        sa[i] = s;
+        ++n;
+        return true;
     }
     
     public int binarySearch(String key){
-        int cur = -1;
+        int cur = n;
         for (int step=n; step>=1; step/=2){
-            while (sa[cur+step].compareTo(key) < 0) cur += step;
+            while (cur-step>=0 && sa[cur-step].compareTo(key) >= 0) cur -= step;
         }
         
-        return sa[cur+1].equals(key);
+        if (cur!=n && sa[cur].equals(key)) return cur;
+        return -1;
     }
+}
         
