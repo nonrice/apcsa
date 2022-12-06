@@ -3,14 +3,14 @@ public class Song {
     private String a;
     private double p;
     
-    public Song(String n, String a, String p){
+    public Song(String n, String a, double p){
         this.n = n;
         this.a = a;
         this.p = p;
     }
     
     public String toString(){
-        return "song: " + name + ", artist: " + artist + ", playTime: " + playTime;
+        return "song: " + n + ", artist: " + a + ", playTime: " + p;
     }
     
     public double getPlayTime(){
@@ -25,5 +25,3 @@ public class Song {
         return n;
     }
 }
-
-    
