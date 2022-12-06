@@ -1,5 +1,7 @@
+import java.util.ArrayList;
+
 public class Playlist {
-    private List<Song> a;
+    private ArrayList<Song> a;
     private String n;
     
     public Playlist(String name){
@@ -11,7 +13,7 @@ public class Playlist {
         return n;
     }
     
-    public List<Song> getList(){
+    public ArrayList<Song> getList(){
         return a;
     }
     
@@ -27,10 +29,10 @@ public class Playlist {
         return a.size();
     }
     
-    public double playListTime(){
+    public double playlistTime(){
         double t = 0;
         for (Song s : a){
-            t += s.getPlayTime():
+            t += s.getPlayTime();
         }
         return t;
     }
@@ -46,14 +48,15 @@ public class Playlist {
     
     public void songsByArtist(String n){
         for (Song s : a){
-            if (s.getArtist().equals(n)) System.out.println(s.getName());
+            if (s.getArtist().equals(n)) System.out.println(s.toString());
         }
     }
     
     public boolean addSongsFrom(Playlist p){
-        for (Song s : p){
+        for (Song s : p.getList()){
             a.add(s);
         }
+        if (p.getList().size() == 0) return false;
+        return true;     
     }
 }
-            
