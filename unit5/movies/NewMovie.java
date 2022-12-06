@@ -11,16 +11,16 @@ public class NewMovie {
     
     public double likenessScore(NewMovie o){
         double match = 0;
-        for (int i=0; i<Math.min(s.length(), o.s.length()); i+=3){
-            bool f = true;
+        for (int i=0; i<s.length(); i+=3){
+            boolean f = true;
             for (int j=0; j<3; ++j){
-                if (s[i+j] != o.s[i+j]){
+                if (s.charAt(i+j) != o.s.charAt(i+j)){
                     f = false;
                     break;
                 }
             }
             if (f == true) ++match;
         }
-        return match/(Math.max(s.length(), o.s.length())/3);
+        return match/(s.length()/3);
     }
 }
