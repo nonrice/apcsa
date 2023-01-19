@@ -18,3 +18,4 @@ public class SciFi extends Movie {
 		return "SciFi";
 	}
 }
+
