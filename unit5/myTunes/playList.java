@@ -39,7 +39,7 @@ public class Playlist {
     
     public boolean isSongInPlaylist(String s){
         for (Song sa : a){
-            if (sa.getName().equals(s)){
+            if (sa.getSongName().equals(s)){
                 return true;
             }
         }
