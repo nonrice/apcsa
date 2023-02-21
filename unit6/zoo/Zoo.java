@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Zoo {
     ArrayList<Animal> jfjfjf;
 
@@ -13,5 +15,9 @@ public class Zoo {
         for (Animal jeff : jfjfjf){
             System.out.println(jeff.toString());
         }
+    }
+
+    int getZooSize(){
+        return jfjfjf.size();
     }
 }

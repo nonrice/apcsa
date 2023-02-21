@@ -2,7 +2,7 @@ public class CollegeStudent extends Student {
     String major;
     int year;
 
-    CollegeStudent(String myname, String myAge, String myGender, String myIdNum, double myGPA, int year, String major){
+    CollegeStudent(String myname, int myAge, String myGender, String myIdNum, double myGPA, int year, String major){
         super(myname, myAge, myGender, myIdNum, myGPA);
         this.year = year;
         this.major = major;

@@ -8,7 +8,7 @@ public class DriversLicense extends Card {
     }
     
     public void printCard(){
-        System.out.println("Card holder: " + name + "\nLicense # " + id + " expires in " + exp);
+        System.out.println("Card holder: " + getName() + "\nLicense # " + id + " expires in " + exp);
     }
     
     public boolean isExpired(){

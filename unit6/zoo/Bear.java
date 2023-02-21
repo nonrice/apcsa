@@ -15,6 +15,6 @@ public class Bear extends Animal {
     }
 
     public String toString(){
-        return "This sucks";
+        return super.toString() + " " + color + " This sucks";
     }
 }

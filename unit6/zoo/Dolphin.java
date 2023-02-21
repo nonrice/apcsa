@@ -21,6 +21,6 @@ public class Dolphin extends Animal {
     }
 
     public String toString(){
-        return "this lab sucks";
+        return super.toString() + lifespan + " " + iq;
     }
 }

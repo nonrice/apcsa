@@ -7,6 +7,6 @@ public class IDCard extends Card {
     }
     
     public void printCard(){
-        System.out.println("Card holder: " + name + "\nID# " + id);
+        System.out.println("Card holder: " + getName() + "\nID# " + id);
     }
 }

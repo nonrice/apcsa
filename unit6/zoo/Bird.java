@@ -23,7 +23,9 @@ public class Bird extends Animal {
     }
 
     public String toString(){
-        if (fly) return "can fly";
-        return "cannot fly";
+        String msg = "";
+        if (fly) msg += "can fly";
+        else msg += "cannot fly";
+        return super.toString() + " " + msg +  " " + egg + " " + species + " this lab so dumb";
     }
 }

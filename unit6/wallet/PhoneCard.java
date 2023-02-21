@@ -9,6 +9,6 @@ public class PhoneCard extends Card {
     }
     
     public void printCard(){
-        System.out.println("Card holder: " + name + "\nPhone # " + id + " with PIN " + pin);
+        System.out.println("Card holder: " + getName() + "\nPhone # " + id + " with PIN " + pin);
     }
 }
