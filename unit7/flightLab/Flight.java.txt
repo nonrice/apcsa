@@ -1,0 +1,79 @@
+// ERIC XUE PD 5
+
+public class Flight {
+	private Seat[][] a;
+
+	public Flight(int r, int c){
+		a = new Seat[r][c];
+		int a1 = a[0].length/2;
+		int a2 = a1+1;
+		if (a[0].length % 2 == 0){
+			a2 = a1-1;
+		}
+		
+		for (int i=0; i<a.length; ++i){
+			for (int j=0; j<a[i].length; ++j){
+				if (j== 0 || j == a[i].length - 1){
+					a[i][j] = new Seat(Seat.WINDOW);
+				} else if (j == a1 || j == a2){
+					a[i][j] = new Seat(Seat.AISLE);
+				} else {
+					a[i][j] = new Seat(Seat.MIDDLE);
+				}
+			}
+		}
+	}
+	
+	public boolean setPassenger(int r, int c, String name){
+		if (r < 0 || r > a.length-1 || c < 0 || c > a[r].length-1) return false;
+		return a[r][c].setPassenger(new Passenger(name));
+	}
+
+	public void printChart(){
+		for (Seat[] r : a){
+			for (Seat s : r){
+				System.out.print(s);
+			}
+			System.out.println();
+		}
+	}
+
+	public int emptySeatCount(String seatType){
+		int ans = 0;
+		for (Seat[] r : a){
+			for (Seat s : r){
+				if ((seatType.equals("any") || s.getType().equals(seatType)) && s.isEmpty()) ++ans;
+			}
+		}
+		return ans;
+	}
+
+	public int findBlock(int r, int x){
+		if (r < 0 || r > a.length-1) return -1;
+		int cur = 0;
+		int lst = -1;
+		for (int c = a[r].length-1; c >= 0; --c){
+			if (a[r][c].isEmpty()) ++cur;
+			else cur = 0;
+			if (cur >= x){
+				lst = c;
+			}
+		}
+
+		return lst;
+	}
+
+	public boolean assignGroup(Passenger[] p){
+		for (int r=0; r<a.length; ++r){
+			int b = findBlock(r, p.length);
+			if (b != -1){
+				int cur =0;
+				for (int c=b; c<p.length+b; ++c){
+					a[r][c].setPassenger(p[cur++]);
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+}

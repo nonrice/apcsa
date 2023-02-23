@@ -1,11 +1,16 @@
-import java.util.ArrayArrayList;
-import java.util.ArrayList;
+// ERIC XUE PD 5
+
+import java.util.*;
 
 public class SkiArea {
 	private int[][] a;
 
 	public SkiArea(int[][] a) {
 		this.a = a;
+	}
+	
+	public int[][] getAlts(){
+		return a;
 	}
 
 	public static int indexOfMax(int[] arr) {
@@ -21,7 +26,7 @@ public class SkiArea {
 	public static int rightIndexOfMax(int[] arr) {
 		int mxidx = arr.length - 1;
 		for (int i = arr.length - 1; i >= 0; i--) {
-			if (arr[i] >= arr[mxidx]) {
+			if (arr[i] > arr[mxidx]) {
 				mxidx = i;
 			}
 		}
@@ -39,12 +44,12 @@ public class SkiArea {
 		ArrayList<Location> trail = new ArrayList<>();
 		trail.add(new Location(row, col));
 
-		while (row < a.length) {
-			int nextRow = row + 1;
+		while (row < a.length-1) {
+			int nxt_row = row + 1;
 			int mnc = col;
-			if (col > 0 && a[nextRow][col - 1] < a[nextRow][mnc]) mnc = col - 1;
-			if (col < a[row].length - 1 && a[nextRow][col + 1] < a[nextRow][mnc]) mnc = col + 1;
-			row = nextRow;
+			if (col > 0 && a[nxt_row][col - 1] < a[nxt_row][mnc]) mnc = col - 1;
+			if (col < a[row].length - 1 && a[nxt_row][col + 1] < a[nxt_row][mnc]) mnc = col + 1;
+			row = nxt_row;
 			col = mnc;
 			trail.add(new Location(row, col));
 		}
@@ -52,22 +57,22 @@ public class SkiArea {
 		return trail;
 	}
 
-	public ArrayList<Location> findZigZagTrail() {
+	public ArrayList<Location> findZigzagTrail() {
 		int row = 0;
 		int col = indexOfMax(a[0]);
 		ArrayList<Location> trail = new ArrayList<>();
 		trail.add(new Location(row, col));
 
 		while (row < a.length - 1) {
-			int nextRow = row + 1;
-			int nextCol;
+			int nxt_row = row + 1;
+			int nxt_col;
 			if (row % 2 == 0) {
-				nextCol = rightIndexOfMax(a[nextRow]);
+				nxt_col = rightIndexOfMax(a[nxt_row]);
 			} else {
-				nextCol = indexOfMax(a[nextRow]);
+				nxt_col = indexOfMax(a[nxt_row]);
 			}
-			row = nextRow;
-			col = nextCol;
+			row = nxt_row;
+			col = nxt_col;
 			trail.add(new Location(row, col));
 		}
 

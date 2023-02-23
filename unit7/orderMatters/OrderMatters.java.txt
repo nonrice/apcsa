@@ -1,4 +1,6 @@
-import java.util.*
+// ERIC XUE PD 5
+
+import java.util.*;
 
 public class OrderMatters {
 	private double[][] m;
@@ -31,7 +33,13 @@ public class OrderMatters {
 
 	public void wrappedOrder(double a[]){
 		rowOrder(a);
-		for (int r=0; r<rows; r+=2) Collections.reverse(Arrays.asList(m[r]));
+		for (int r=1; r<rows; r+=2){
+			for (int c=0; c<cols/2; ++c){
+				double t = m[r][c];
+				m[r][c] = m[r][cols-c-1];
+				m[r][cols-c-1] = t;
+			}
+		}	
 	}
 
 	public void print2D(){
